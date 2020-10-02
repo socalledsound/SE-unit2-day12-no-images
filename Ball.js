@@ -16,8 +16,13 @@ class Ball {
     }
 
 
-    rotateEye(){
-        this.eyeAngle += this.eyeAngleInc;
+    rotateEye(direction, amount = this.eyeAngleInc){
+        if(direction === 'right'){
+            this.eyeAngle -= amount;
+        } else if(direction === 'left'){
+            this.eyeAngle += amount;
+        }
+       
         this.eyeX = Math.sin(this.eyeAngle) * this.eyeDistanceFromCenter + this.x;
         this.eyeY = Math.cos(this.eyeAngle) * this.eyeDistanceFromCenter + this.y;
 
@@ -45,8 +50,15 @@ class PlayerBall extends Ball {
         } else if( axis === 'y'){
             this.y += amount;
         }
-
+        if(amount > 0){
+            this.rotateEye('right');
+        } else if(amount < 0){
+            this.rotateEye('left');
+        }
+       
     }
+
+    
 
 }
 
@@ -61,7 +73,7 @@ class GreenBall extends Ball {
 
 
         move(){
-            this.rotateEye();
+            this.rotateEye('left');
             this.x -= this.speed;
             
         }
