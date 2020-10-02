@@ -6,7 +6,6 @@ const groundOptions = {
 
 
 const greenBallOptions = {
-    x: 400,
     y: 530,
     r: 20,
     fillColor: [0, 250, 0],
@@ -16,7 +15,7 @@ const greenBallOptions = {
 
 //some starting values for the playerball
 const playerBallOptions = {
-    x: 100, 
+    x: 100,
     y: 500,
     r: 50,
     fillColor: [0, 0, 250],
@@ -25,7 +24,12 @@ const playerBallOptions = {
 const myPlayerBall = new PlayerBall(playerBallOptions); 
 
 //initiliaze a green ball -- how can we make an array of three green balls?
-const greenBall = new Ball(greenBallOptions);
+const numGreenBalls = 6;
+const greenballs = Array.from({ length: numGreenBalls });
+greenballs.forEach((ball, i) => {
+    greenballs[i] = new GreenBall({x: (i+1) * 50 + 400, ...greenBallOptions });
+})
+
 
 
 function setup(){
@@ -36,8 +40,11 @@ function draw(){
     background(210,220,240);
     //draw ground
     drawGround(groundOptions.y, groundOptions.fillColor);
-    //show green ball -- how can we change this next line to draw an array of balls?
-    greenBall.display();
+    
+    greenballs.forEach(greenball => {
+        greenball.move();
+        greenball.display();
+    })
     //check the various arrow keys and move player if they are being pressed
     checkKeyInput();
     //display current position of player ball.

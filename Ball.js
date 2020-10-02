@@ -30,5 +30,19 @@ class PlayerBall extends Ball {
 
     }
 
-    
+}
+
+
+class GreenBall extends Ball {
+        // take the arguments in to the constructor function
+        constructor({x, y, r, fillColor}) {
+            //assign them to values in the main Ball object
+            super({x, y, r, fillColor})
+            this.speed = 0.25;
+        }
+
+
+        move(){
+            this.x -= this.speed;
+        }
 }
