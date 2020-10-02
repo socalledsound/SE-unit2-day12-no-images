@@ -5,11 +5,29 @@ class Ball {
         this.y = y;
         this. r = r;
         this.fillColor = fillColor;
+        this.eyeColor = [250, 250, 250];
+        this.eyeDistanceFromCenter = this.r * 0.55;
+        this.eyeAngle = -2.5;
+        this.eyeAngleInc = 0.05;
+        this.eyeX = Math.sin(this.eyeAngle) * this.eyeDistanceFromCenter + this.x;
+        this.eyeY = Math.cos(this.eyeAngle) * this.eyeDistanceFromCenter + this.y;
+        this.eyeSize = this.r * 0.6;
+        
+    }
+
+
+    rotateEye(){
+        this.eyeAngle += this.eyeAngleInc;
+        this.eyeX = Math.sin(this.eyeAngle) * this.eyeDistanceFromCenter + this.x;
+        this.eyeY = Math.cos(this.eyeAngle) * this.eyeDistanceFromCenter + this.y;
+
     }
 
     display(){
         fill(this.fillColor);
         ellipse(this.x, this.y, this.r * 2);
+        fill(this.eyeColor);
+        ellipse(this.eyeX,this.eyeY, this.eyeSize);
     }
 }
 //the playerball class derived from the main ball class
@@ -43,6 +61,8 @@ class GreenBall extends Ball {
 
 
         move(){
+            this.rotateEye();
             this.x -= this.speed;
+            
         }
 }

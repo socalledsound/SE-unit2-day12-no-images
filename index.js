@@ -24,10 +24,10 @@ const playerBallOptions = {
 const myPlayerBall = new PlayerBall(playerBallOptions); 
 
 //initiliaze a green ball -- how can we make an array of three green balls?
-const numGreenBalls = 6;
+const numGreenBalls = 20;
 const greenballs = Array.from({ length: numGreenBalls });
 greenballs.forEach((ball, i) => {
-    greenballs[i] = new GreenBall({x: (i+1) * 50 + 400, ...greenBallOptions });
+    greenballs[i] = new GreenBall({x: (i+1) * greenBallOptions.r * 2 + 400, ...greenBallOptions });
 })
 
 
