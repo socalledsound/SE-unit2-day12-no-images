@@ -18,5 +18,14 @@ class PlayerBall extends Ball {
         super(x, y, r, fillColor)
     }
 
+    move(axis, amount){
+        if(axis === 'x'){
+            this.x += amount;
+        } else if( axis === 'y'){
+            this.y += amount;
+        }
+
+    }
+
     
 }
