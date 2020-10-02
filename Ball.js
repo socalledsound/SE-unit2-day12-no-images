@@ -5,6 +5,7 @@ class Ball {
         this.y = y;
         this. r = r;
         this.fillColor = fillColor;
+ 
     }
 
     display(){
@@ -27,8 +28,7 @@ class PlayerBall extends Ball {
         } else if( axis === 'y'){
             this.y += amount;
         }
-
-    }
-
-    
+    } 
 }
+
+//here, make a new GreenBall class, that has a move function that automagically moves all green balls slowly to the left
