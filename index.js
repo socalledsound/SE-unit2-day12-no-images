@@ -19,6 +19,7 @@ const playerBallOptions = {
     y: 500,
     r: 50,
     fillColor: [0, 0, 250],
+    jumpFillColor: [220,90,220],
 }
 //make a new player ball
 const myPlayerBall = new PlayerBall(playerBallOptions); 
@@ -48,6 +49,7 @@ function draw(){
     //check the various arrow keys and move player if they are being pressed
     checkKeyInput();
     //display current position of player ball.
+    myPlayerBall.driftDown();
     myPlayerBall.display();
 
 
@@ -64,9 +66,9 @@ function checkKeyInput(){
         myPlayerBall.move('x', -1);
     }
 
-    // if(keyIsDown(UP_ARROW)){
-    //     myPlayerBall.move('y', -1);
-    // }
+    if(keyIsDown(UP_ARROW)){
+        myPlayerBall.jump();
+    }
 
     // if(keyIsDown(DOWN_ARROW)){
     //     myPlayerBall.move('y', 1);
